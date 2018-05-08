@@ -124,7 +124,7 @@ public class MemberDAO {
 		return -1;
 	}
 	
-	//회원가입을 위한 정보들을 빈에 포장하는 메서드
+	//아이디값을 이용해 찾은 정보를 포장하는 메서드
 	public MemberBean getMember(String id) throws SQLException {
 		MemberBean member = null;
 		String sql = null;
@@ -231,8 +231,7 @@ public class MemberDAO {
 		MemberBean member = new MemberBean();
 		
 		try {
-			sql = "select MEMBER_ID, MEMBER_PW, MEMBER_JUMIN1," +
-		"MEMBER_JUMIN2 from member where MEMBER_NAME=?";
+			sql = "select MEMBER_ID, MEMBER_PW, MEMBER_JUMIN1, MEMBER_JUMIN2 from member where MEMBER_NAME=?";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);

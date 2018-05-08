@@ -5,17 +5,17 @@
 function formSubmit() {
 	var forms = document.getElementById("findform");
 	
-	if((form.MEMBER_NAME.value=="")) || (form.MEMBER_NAME.value.length<=1)) {
+	if((form.MEMBER_NAME.value=="") || (form.MEMBER_NAME.value.length<=1)) {
 		alert("이름을 정확히 입력해 주십시오");
 		form.MEMBER_NAME.focus();
 		return false		
 	}
-	else if((form.MEMBER_JUMIN1.value=="")) || (form.MEMBER_JUMIN1.value.length<6)) {
+	else if((form.MEMBER_JUMIN1.value=="") || (form.MEMBER_JUMIN1.value.length<6)) {
 		alert("주민등록번호를 정확히 입력해 주십시오");
 		form.MEMBER_JUMIN1.focus();
 		return false		
 	}
-	else if((form.MEMBER_JUMIN2.value=="")) || (form.MEMBER_JUMIN2.value.length<7)) {
+	else if((form.MEMBER_JUMIN2.value=="") || (form.MEMBER_JUMIN2.value.length<7)) {
 		alert("주민등록번호를 정확히 입력해 주십시오");
 		form.MEMBER_JUMIN2.focus();
 		return false		
@@ -34,7 +34,7 @@ function formSubmit() {
 	</tr>
 </table>
 
-<form action="./MemberFindAction.me" method="post" name="findform" onsubmit="return formSubmit();">
+<form action="./MemberFindAction.me" method="post" name="findform" onSubmit="return formSubmit();">
 
 <table width="450px" cellspacing="0" cellpadding="0" border="0">
 <thead>
