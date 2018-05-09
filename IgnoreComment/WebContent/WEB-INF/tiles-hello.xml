@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<definition name="hello" template="/tiles/template/layout.jsp">
+		<put-attribute name="title" value="헬로우 월드" />
+		<put-attribute name="header" value="/tiles/template/header.jsp"></put-attribute>
+		<put-attribute name="menu" value="/tiles/template/menu.jsp"></put-attribute>
+		<put-attribute name="body" value="/tiles/hello_body.jsp"></put-attribute>
+		<put-attribute name="footer" value="/tiles/template/footer.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="hello2" template="/tiles/template/layout.jsp">
+		<put-attribute name="title" value="헬로우 월드2" />
+		<put-attribute name="header" value="/tiles/template/header2.jsp"></put-attribute>
+		<put-attribute name="menu" value="/tiles/template/menu.jsp"></put-attribute>
+		<put-attribute name="body" value="/tiles/hello_body.jsp"></put-attribute>
+		<put-attribute name="footer" value="/tiles/template/footer2.jsp"></put-attribute>
+	</definition>
+
+</tiles-definitions>
