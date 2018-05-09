@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC	
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+	
+<!-- namespace는 가상의 경로를 만들어준다. xml에서 설정하면 jsp에서 찾아갈 경로도 바꿔줘야 동작한다 -->	
+<struts>
+	<!-- hello를 출력하는 간단예제 -->
+	<package name="hello" namespace="/zzuggumi"  extends="struts-default">
+		<action name="hello" class="hello.HelloWorldAction">
+			<result>/result.jsp</result>
+		</action>
+	</package>	
+	
+	<!-- 5번 예제 - POJO클래스를 이용해 hello를 출력하기 -->
+	<package name="hello1" namespace="/hello1" extends="struts-default">
+		<action name="hello" class="hello1.action.HelloWorld">
+			<result name="success">/hello1/result.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 6번 예제 - action인터페이스를 이용해 hello를 출력하기 -->
+	<package name="hello2" namespace="/hello2" extends="struts-default">
+		<action name="hello" class="hello2.action.HelloWorld">
+			<interceptor-ref name="params"/>
+			<result name="success">/hello2/result.jsp</result>
+			<result name="input">/hello2/hello.jsp</result> <!-- 가로챈 값이 아무것도 없으면 다시 hello.jsp를 실행 -->
+		</action>
+	</package>
+	
+	<!-- 7번 예제 - actionSupport 클래스를 이용해 hello를 출력하기 -->
+	<package name="hello3" namespace="/hello3" extends="struts-default">
+		<action name="hello" class="hello3.action.HelloWorld">
+			<!-- params 인터셉터는 액션의 setter값을 요청 파라미터로 세팅 -->
+			<interceptor-ref name="params"/>
+			<!-- workflow 인터셉터는 액션에서 validate()를 먼저 호출함. 그래서 유효성 검증을 하는 역할-->
+			<interceptor-ref name="workflow"/>
+			
+			<result name="input">/hello3/hello.jsp</result>
+			<result name="success">/hello3/result.jsp</result>
+		</action>	
+	</package>
+	
+</struts>	
+
