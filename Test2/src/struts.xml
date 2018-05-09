@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+ 
+    <package name="hello" namespace="/hahaha" extends="struts-default">
+      <action name="hello" class="hello.HelloWorldAction">
+        <result>/result.jsp</result>
+      </action>
+    </package>
+
+<package name="hello1" namespace="/hello1" extends="struts-default">
+      <action name="hello" class="hello1.action.HelloWorld">
+        <result name="success">/hello1/result.jsp</result>
+      </action>
+    </package>
+
+<package name="hello2" namespace="/hello2" extends="struts-default">
+      <action name="hello" class="hello2.action.HelloWorld">
+        <!-- params인터셉터는 액션의 setter값을 요청 파라미터로 셋팅한다(생략가능)-->
+        <interceptor-ref name="params"/>
+        <result name="success">/hello2/result.jsp</result>
+<result name="input">/hello2/hello.jsp</result>
+      </action>
+    </package>
+
+<package name="hello3" namespace="/hello3" extends="struts-default">
+      <action name="hello" class="hello3.action.HelloWorld">
+        <!-- params 인터셉터는 액션의 setter값을 요청 파라미터로 셋팅한다 -->
+        <interceptor-ref name="params"/>
+        <!-- workflow 인터셉터는 Action에서  validate()을 먼저 호출한다. -->
+        <interceptor-ref name="workflow"/>
+        <result name="input">/hello3/hello.jsp</result>
+        <result name="success">/hello3/result.jsp</result>
+      </action>
+    </package>
+
+
+
+
+
+
+</struts>
+
