@@ -59,12 +59,51 @@
 			<interceptor-ref name="params"/>
 			<result>/form1/save_ok2.jsp</result>
 			<result name="error">/form1/error.jsp</result>
-		</action>
-		
-		
+		</action>	
 	</package>
 	
+	<!-- 9번 예제 - 액션수행시간 체크하는 타이머 -->
+	<package name="struts2_1" extends="struts-default">
+		<interceptors>
+			<interceptor name="mytimer" class="interceptor.Timer"/>
+		</interceptors>
+		
+		<action name="add" class="interceptor1.action.SumAction">
+			<interceptor-ref name="mytimer"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			
+			<result>/interceptor/result.jsp</result>
+		</action>
+	</package>
 	
+	<!-- 10번 예제 - 로그인 -->
+	<package name="struts2_2" extends="struts-default">
+		<action name="login" class="login2.action.LoginAction">
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/login/login_ok.jsp</result>
+			<result name="login">/login/login.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 11번 예제 - 로그인 (DI)-->
+	<package name="struts2_3" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginDao" class="login3.interceptor.LoginDAOInterceptor"/>
+		</interceptors>
+	
+		<action name="login" class="login3.action.LoginAction">
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<interceptor-ref name="loginDao"/>
+			<result>/login2/login_ok.jsp</result>
+			<result name="login">/login2/login.jsp</result>
+		</action>
+	</package>
 	
 	
 </struts>	
