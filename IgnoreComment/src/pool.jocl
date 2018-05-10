@@ -1,0 +1,19 @@
+<object class="org.apache.commons.dbcp.PoolableConnectionFactory"
+	xmlns="http://apache.org/xml/xmlns/jakarta/commons/jocl">
+	
+	<object class="org.apache.commons.dbcp.DriverManagerConnectionFactory">
+		<string value="jdbc:oracle:thin:@istudy.iptime.org:7000:ORCL"/>
+		<string value="KH10"/>
+		<string value="oracle"/>
+	</object>
+	
+	<object class="org.apache.commons.pool.impl.GenericObjectPool">
+		<object class="org.apache.commons.pool.PoolableObjectFactory" null="true"/>
+	</object>
+	
+	<object class="org.apache.commons.pool.KeyedObjectPoolFactory" null="true"/>
+	
+	<string null="true"/>
+	<boolean value="false"/>
+	<boolean value="true"/>
+</object>
