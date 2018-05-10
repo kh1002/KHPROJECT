@@ -42,5 +42,30 @@
 		</action>	
 	</package>
 	
+	<!-- 8번 예제 - 스트러츠로 MVC패턴으로 표현하기 -->
+	<package name="struts2" extends="struts-default">
+		<action name="user" class="login.action.UserAction">
+			<result>/form1/save_ok.jsp</result>
+			<result name="error">/form1/error.jsp</result>
+		</action>
+		<action name="user2" class="login.action.UserAction2">
+			<result>/form1/save_ok2.jsp</result>
+			<result name="error">/form1/error.jsp</result>
+		</action>
+		<!-- user3액션에 대한 자세한 설명은 form1/form3.jsp에 있음 -->
+		<action name="user3" class="login.action.UserAction3">
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/form1/save_ok2.jsp</result>
+			<result name="error">/form1/error.jsp</result>
+		</action>
+		
+		
+	</package>
+	
+	
+	
+	
 </struts>	
 
