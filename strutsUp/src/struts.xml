@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC	
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+<package name="file" extends="struts-default">
+	<action name="fileUploadForm" class="file.fileUploadAction">
+		<result>/upload/fileUpload.jsp</result>
+	</action>
+	
+	<action name="fileUploadAction" class="file.fileUploadAction" method="upload">
+		<result name="input">/upload/fileUpload.jsp</result>
+		<result>/upload/fileUploadOK.jsp</result>
+	</action>
+</package>
+
+<package name="file2" extends="struts-default">
+	<action name="multiUploadListForm">
+		<result>/upload/multiUploadList.jsp</result>
+	</action>
+	
+	<action name="multiUploadListAction" class="file.multiUploadListAction" method="upload">
+		<result>/upload/multiUploadListOK.jsp</result>
+	</action>
+</package>
+
+<package name="file3" extends="struts-default">
+	<action name="multiUploadArrayForm">
+		<result>/upload/multiUploadArray.jsp</result>
+	</action>
+	
+	<action name="multiUploadArrayAction" class="file.multiUploadArrayAction" method="upload">
+		<result>/upload/multiUploadArrayOK.jsp</result>
+	</action>
+</package>
+
+
+</struts>
