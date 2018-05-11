@@ -105,6 +105,24 @@
 		</action>
 	</package>
 	
+	<!-- 16번 예제 - 파일업로드 -->
+	<constant name="struts.multipart.saveDir" value="/tmp"/>
+	<package name="struts2_4" extends="struts-default">
+		<interceptors>
+			<interceptor name="fileUploadDao" class="upload.interceptor.FileUploadDAOInterceptor"/>
+		</interceptors>
+		
+		<action name="fileupload" class="upload.action.FileUploadAction">
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="fileUpload"/>
+			<interceptor-ref name="params"/>
+			<interceptor-ref name="fileUploadDao"/>
+			
+			<result>/upload/upload_ok.jsp</result>
+		</action>
+
+	</package>
 	
 </struts>	
 
