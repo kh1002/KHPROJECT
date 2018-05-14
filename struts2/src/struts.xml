@@ -69,9 +69,12 @@
 		</interceptors>
 		
 		<action name="add" class="interceptor1.action.SumAction">
+			<param name="num1">5</param> <!-- 18번 staticParams예제를 위해 추가된 코드 -->
+			<param name="num2">8</param> <!-- 18번 staticParams예제를 위해 추가된 코드 -->
 			<interceptor-ref name="mytimer"/>
 			<interceptor-ref name="prepare"/>
 			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="staticParams"/> <!-- 18번 staticParams예제를 위해 추가된 코드 -->
 			<interceptor-ref name="params"/>
 			
 			<result>/interceptor/result.jsp</result>
@@ -123,6 +126,51 @@
 		</action>
 
 	</package>
+	
+	
+	<!-- 18번 예제 - staticParams인데 Map을 활용해 값을 수동으로 세팅해서 두 수의 합을 수행함  -->
+	<package name="struts2_1_1" extends="struts-default">
+		<action name="add" class="staticParams.action.SumAction">
+			<param name="num1">145</param> 
+			<param name="num2">28</param> 
+			
+			<result>/staticParams/result.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 19번 예제 - checkBox의 체크 안한부분도 값을 넘겨주는 예제 -->
+	<package name="struts2_5" extends="struts-default">
+	
+		<action name="checkbox" class="checkbox.action.CheckBoxAction">
+			<!-- 체크하지 않은 항목도 값을 전송해준다 / 여기서는 false를 전송 -->
+			<interceptor-ref name="checkbox">
+				<param name="uncheckedValue">false</param>
+			</interceptor-ref>
+			
+			<result>/checkbox/result.jsp</result>
+		</action>
+		
+		<action name="checkboxExam1">
+			<result>/checkbox/checkbox.jsp</result>
+		</action>
+	</package>
+	
+	<package name="struts2_6" extends="struts-default">
+		<action name="checkbox" class="checkbox.action.CheckBoxAction">
+			<interceptor-ref name="checkbox">
+				<param name="uncheckedValue">false</param>
+			</interceptor-ref>
+			<interceptor-ref name="checkbox"/>
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+		
+			<result>/checkbox/result.jsp</result>
+		
+		</action>
+
+	</package>
+	
 	
 </struts>	
 
