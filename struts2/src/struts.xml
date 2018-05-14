@@ -189,7 +189,7 @@
 		</action>
 	</package>
 	
-	<!-- 21번 예제 - redirect하는 result/ 로그인을 하는 예제 -->
+	<!-- 24번 예제 - redirect하는 result/ 로그인을 하는 예제 -->
 	<package name="struts2_24" extends="struts-default">
 		<action name="login" class="login4.action.LoginAction">
 			<interceptor-ref name="params"/>
@@ -198,7 +198,66 @@
 		</action>
 	</package>
 	
+	<!-- 25번 예제 - chain타입의 result로 회원가입폼에서 로그인으로 넘어가는 예제 -->
+	<package name="struts2_25" extends="struts-default">
+		<action name="member" class="chain.action.MemberAction" >
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			
+			<result name="success" type="chain"> <!-- 동작이 다 되고 chain을 통해 login액션이 실행되도록 한다 -->
+				<param name="actionName">login</param>
+			</result>
+			
+			<result name="login">/login/login.jsp</result>
+		</action>
+		
+		<action name="login" class="chain.action.LoginAction"> <!--  login액션 실행 -->
+			<interceptor-ref name="chain"/> <!-- 앞에 member액션에서 처리된 객체나 데이터를 갖다가 세팅하는 역할 -->
+			<interceptor-ref name="params"/>
+			
+			<result name="success">/login/login_ok.jsp</result>
+			<result name="login">/login/login.jsp</result>
+		
+		</action>
+	</package>
 	
+	<!-- 26번 예제 - result의 stream으로 파일다운로드 예제 -->
+	<package name="struts2_26" extends="struts-default">
+		<action name="download" class="stream.FileDownloadAction">
+			<interceptor-ref name="exception"/>
+			<interceptor-ref name="staticParams"/>
+			<interceptor-ref name="params"/>
+			
+			<!-- action에 있는 dir값 세팅 -->
+			<param name="dir">c:/java/upload</param>
+			
+			<result name="success" type="stream">
+				<param name="inputName">inputStream</param>
+				<!-- 아래 = ${fileName}은 action에 있는 fileName값을 읽는다 -->
+				<param name="contentDisposition">attachment; filename=${fileName}</param>
+				<param name="bufferSize">10240000</param>			
+			</result>
+			
+			<result name="error">/stream/fileNotFound.jsp</result>
+			<exception-mapping result="error" exception="java.io.FileNotFoundException"/>
+		</action>
+	
+	</package>
+	
+	
+	<!-- 27번 예제 - result만들기 예제 -->
+	<package name="struts2_27" extends="struts-default">
+	
+		<result-types>
+			<result-type name="myResult" class="result.MyResult"/>
+		</result-types>
+		
+		<action name="helloDispatcher" class="result.HelloDispatcherAction">
+			<result name="success" type="myResult">/result/success.jsp</result>
+		</action>
+		
+	</package>
 	
 	
 </struts>	
