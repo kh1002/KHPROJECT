@@ -166,10 +166,39 @@
 			<interceptor-ref name="params"/>
 		
 			<result>/checkbox/result.jsp</result>
-		
 		</action>
-
 	</package>
+	
+	
+	
+	<!-- 21번 예제 - servlet을 이용해 세션에 정보를 저장하여 로그인을 하는 예제 -->
+	<package name="struts2_21" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginDao" class="servletConfig.interceptor.LoginDAOInterceptor"/>
+		</interceptors>
+	
+		<action name="login" class="servletConfig.action.LoginAction">
+			<interceptor-ref name="prepare"/>
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<interceptor-ref name="loginDao"/>
+			<interceptor-ref name="servletConfig"/>
+			
+			<result>/servletConfig/login_ok.jsp</result>
+			<result name="login">/servletConfig/login.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 21번 예제 - redirect하는 result/ 로그인을 하는 예제 -->
+	<package name="struts2_24" extends="struts-default">
+		<action name="login" class="login4.action.LoginAction">
+			<interceptor-ref name="params"/>
+			<result name="success" type="redirect">/login/login_ok.jsp?id=${id}</result>
+			<result name="login">/login/login.jsp</result>	
+		</action>
+	</package>
+	
+	
 	
 	
 </struts>	
