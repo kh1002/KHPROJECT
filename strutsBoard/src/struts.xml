@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC	
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+	
+<struts>
+	<package name="board" extends="struts-default">
+	
+	<!-- 글로벌 예외 처리 화면 설정 -->
+	<!-- 
+		<global-results>
+			<result name="error">/board/pageError.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+	 -->
+	 <!-- 게시판 리스트 액션 -->
+		<action name="listAction" class="board.listAction">
+			<result>/board/boardList.jsp</result>
+		</action>
+		
+	 <!-- 게시판 글쓰기 액션 -->
+	 	<action name="writeForm" class="board.writeAction" method="form">
+	 		<result>/board/boardWrite.jsp</result>
+	 	</action>
+		<action name="writeAction" class="board.writeAction">
+			<result type="redirect-action">
+				<param name="actionName">listAction</param>
+			</result>
+		</action>
+		
+	<!-- 게시판 상세보기 액션 -->
+		<action name="viewAction" class="board.viewAction">
+			<result>/board/boardView.jsp</result>
+		</action>
+	<!-- 파일 다운로드 액션 -->	
+		<action name="fileDownloadAction" class="board.viewAction" method="download">
+			<result name="success" type="stream">
+				<param name="contentType">binary/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">${contentDisposition}</param>
+				<param name="contentLength">${contentLength}</param>
+				<param name="bufferSize">4096</param>				
+			</result>
+		</action>
+	
+	<!-- 비밀번호 체크 액션 -->	
+		<action name="checkForm" class="board.viewAction" method="checkForm">
+			<result>/board/checkPassword.jsp</result>
+		</action>
+	
+		<action name="checkAction" class="board.viewAction" method="checkAction">
+			<result name="error">/board/checkError.jsp</result>
+			<result>/board/checkSuccess.jsp</result>
+		</action>
+	
+	
+	</package>
+	
+	
+</struts>
