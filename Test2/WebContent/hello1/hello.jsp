@@ -12,8 +12,6 @@ Input Your Name :  <input type=text name=name>
 <input type=submit>
 </form>
 
-ㅇㅇㅇㅇㅇ
-내일은 회의있는 즐거운 수요일이에요
-야호
+fuck
 </body>
 </html>
